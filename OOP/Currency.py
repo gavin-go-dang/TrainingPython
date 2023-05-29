@@ -7,14 +7,12 @@ import os
  
 
 class RateOfCurrency(object):
-    __json_by_date = False
+    
     def __init__(sefl, url):
         sefl.url = url
-        sefl.json_by_date = False
+        sefl.json_by_date = None
 
-    def get_json_by_date_url(sefl):
-        return sefl.__json_by_date
-
+    
     def get_data(sefl):
         headers = {'Accept': 'application/json'}
 
@@ -25,7 +23,7 @@ class RateOfCurrency(object):
         try:
             data = sefl.get_data()['result']['records']
             result_by_day = {}
-            
+
             for date_info in data:
                 date = date_info['end_of_day']
                 rate= []
@@ -48,12 +46,11 @@ class RateOfCurrency(object):
             return 0
 
     def get_rate(self, currency_name):
-        if not self.get_json_by_date_url():
-            path = 'json'
+        if not self.json_by_date:
+            path = "json"
             dir_list = os.listdir(path)
             print= dir_list
             file_id= 0
-
             while True:
                 filename = 'resultByDayOOP{}'.format(str(file_id))
                 if filename not in dir_list:
@@ -69,15 +66,16 @@ class RateOfCurrency(object):
         rate_by_date_dict = {}
         record ={}
         name_mapping_currency = ''
-        for date in list(data.keys()):
+        for date, value in data.items():
             try:
-                record[date] = float(data[date]['{}_sgd'.format(currency_name)])
+                record[date] = float(value['{}_sgd'.format(currency_name)])
                 name_mapping_currency = '{}_sgd'.format(currency_name)
             except:
-                record[date] = float(data[date]['{}_sgd_100'.format(currency_name)])
+                record[date] = float(value['{}_sgd_100'.format(currency_name)])
                 name_mapping_currency = '{}_sgd_100'.format(currency_name)
         rate_by_date_dict['currency'] = currency_name
         rate_by_date_dict['record'] = record
+        
         return rate_by_date_dict
 
  
@@ -87,3 +85,4 @@ url = 'https://eservices.mas.gov.sg/api/action/datastore/search.json?resource_id
 
 sgd = RateOfCurrency(url)
 print(sgd.get_rate('vnd'))
+
