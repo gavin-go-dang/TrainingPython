@@ -3,6 +3,17 @@
 #and write the result to file result.txt
 
 
-number = int(input())
+f = open("inputs/input02.txt", "r")
+
+number = int(f.readline())
+
+result = 'even' if number % 2== 0 else 'odd'
+print(result)
+
+
+f = open("results/result02.txt", "w")
+f.write(result)
+f.close()
+
 
 
