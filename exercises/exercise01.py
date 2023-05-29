@@ -10,8 +10,8 @@ print('Enter your age: ')
 age = int(input())
 
 today = date.today()
-currentYear = today.strftime("%Y")
-result = name + ' will turn 100 years old in ' + str(int(currentYear )+ 100 - age)
+current_year = today.strftime("%Y")
+result = name + ' will turn 100 years old in ' + str(int(current_year )+ 100 - age)
 print(result)
 
 #write result to file result01.txt

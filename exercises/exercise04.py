@@ -1,4 +1,4 @@
-#solution on https://www.practicepython.org/exercise/2014/02/26/04-divisors.html
+#solution on https://www.practicepython.org/exercise/2014/03/05/05-list-overlap.html
 #read number in file input04.txt
 #and write the result to file result04.txt
 
