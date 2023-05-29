@@ -7,11 +7,14 @@ import os
  
 
 class RateOfCurrency(object):
+    __json_by_date = False
     def __init__(sefl, url):
         sefl.url = url
-        sefl.json_by_date = None
+        sefl.json_by_date = False
 
-    
+    def get_json_by_date_url(sefl):
+        return sefl.__json_by_date
+
     def get_data(sefl):
         headers = {'Accept': 'application/json'}
 
@@ -22,7 +25,7 @@ class RateOfCurrency(object):
         try:
             data = sefl.get_data()['result']['records']
             result_by_day = {}
-
+            
             for date_info in data:
                 date = date_info['end_of_day']
                 rate= []
@@ -45,8 +48,8 @@ class RateOfCurrency(object):
             return 0
 
     def get_rate(self, currency_name):
-        if not self.json_by_date:
-            path = "json"
+        if not self.get_json_by_date_url():
+            path = 'json'
             dir_list = os.listdir(path)
             print= dir_list
             file_id= 0
