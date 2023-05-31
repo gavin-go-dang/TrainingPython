@@ -35,8 +35,9 @@ class Triangle(Shape):
     list_shape = list()
 
     def __init__(self, name, *agrv):        
+        super().__init__(name)
         if name not in Triangle.list_shape:
-            super().__init__(name)
+            
             self.__n = 3
             if agrv:
                 self.parametter = list(agrv)
@@ -61,8 +62,8 @@ class Retangle(Shape):
     list_of_shape = list()
 
     def __init__(self, name, *agrv):
-        if  name not in Retangle.list_of_shape:
-            super().__init__(name)
+        super().__init__(name)
+        if  name not in Retangle.list_of_shape:            
             self.__n = 4
             if agrv:
                 self.parametter = list(agrv)
@@ -84,8 +85,9 @@ class Square(Shape):
     list_of_shape = list()
 
     def __init__(self, name, *agrv):
+        super().__init__(name)
         if  name not in Square.list_of_shape:
-            super().__init__(name)
+            
             self.__n = 4
             if agrv:
                 self.parametter = list(agrv)
@@ -106,8 +108,9 @@ class Circle(Shape):
     list_of_shape = list()
 
     def __init__(self, name, *agrv):
+        super().__init__(name)
         if  name not in Circle.list_of_shape:
-            super().__init__(name)
+            
             self.__n = 0
             if agrv:
                 self.parametter = list(agrv)

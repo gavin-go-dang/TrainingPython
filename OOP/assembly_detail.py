@@ -68,7 +68,8 @@ class Detail:
         print((self.__body).get_name())
 
         print('----Tails-----')
-        print(self.__tail)
+        for i in self.__tail:
+            print(i.get_name())
 
 
         
@@ -97,7 +98,6 @@ class DetailBuilder001(Builder):
     
     def get_tails(self):
         sq = Square('abcd', 9)
-        print(sq.get_name())
         return sq
     
 
@@ -109,5 +109,3 @@ director.setBuilder(chitiet1)
 
 product = director.getDetail()
 product.describe()
-
-
