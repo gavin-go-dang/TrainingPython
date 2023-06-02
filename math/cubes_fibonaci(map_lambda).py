@@ -2,7 +2,7 @@
 
 def create_list_fibonaci(n):
     list_num = [1]
-    if n ==1: 
+    if n == 1: 
         return list_num
     list_num.append(1)
     if n == 2: 

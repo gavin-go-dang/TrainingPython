@@ -25,16 +25,15 @@ def check_extension(extension):
     
 
 def check_all_extension(extensions):
-    if len(extensions)>3:
+    if len(extensions) > 3 or len(extensions) < 1:
         return False
-    for extension in extensions:
-        if not check_extension(extension):
+    if not all(map(check_extension, extensions)):
             return False
     return True
 
 
 def valid(email):
-    if email.count('@') != 1:
+    if len(re.findall('@', email)) != 1:
         return False
     
     email_component = email.split('@')
@@ -57,7 +56,8 @@ list_email = [
     'abc@mail.com.vn',
     'cd09..@gmail.com',
     'regedit@gmail.abc101.vn',
-    'greenrock@gmail.com.vn.net.us'
+    'greenrock@gmail.com.vn.net.us',
+    'abc@gmail'
 ]
 
 a = list(map(valid, list_email))
@@ -65,5 +65,5 @@ a = list(map(valid, list_email))
 print(a)
 
 
-list_email = list(filter(lambda x: valid(x), list_email))
-print(list_email)
+list_email_valid = list(filter(lambda x: valid(x), list_email))
+print(list_email_valid)
