@@ -10,7 +10,8 @@ def check_first_number(digits):
 
 
 def check_len(digits):
-    if len(digits.replace('-', '')) != 16:
+    max_len_card_number = 16
+    if len(digits.replace('-', '')) != max_len_card_number: 
         return False
     
     return True
@@ -33,8 +34,8 @@ def check_group(digits):
      
     return True
 
-def check_separator_and_ditgit(credit_number):
-    
+
+def check_separator_and_ditgit(credit_number):    
     valid_char = re.compile(r"[0-9-]+")
     if re.fullmatch(valid_char, credit_number):
         return True

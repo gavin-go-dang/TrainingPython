@@ -21,10 +21,10 @@ def calculate_point(string):
     score_stuart = 0
 
     for len_word in range(1, len(string)+1):
-        list_word = get_n_word(string, len_word)
-        for word in list_word[0]:
+        list_word_kevin, list_word_stuart = get_n_word(string, len_word)
+        for word in list_word_kevin:
             score_kevin += len(re.findall(word, string))
-        for word in list_word[-1]:
+        for word in list_word_stuart:
             score_stuart += len(re.findall(word, string))
 
     if score_kevin > score_stuart:
